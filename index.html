@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Governance Study</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+      line-height: 1.5;
+    }
+
+    .notice {
+      background: #f3f3f3;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="notice">
+    <strong>Instructions</strong>
+    <p>
+      Please spend up to 5 minutes voting on statements and adding any
+      statements of your own. You do not need to vote on every statement.
+    </p>
+    <p>
+      When you have finished, return to the original Qualtrics survey tab
+      and click <strong>Next</strong> to complete the study.
+    </p>
+  </div>
+
+  <div id="polis-container"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const participantId = params.get("pid");
+
+    if (!participantId) {
+      document.getElementById("polis-container").innerHTML =
+        "<p>Participant ID is missing. Please return to the survey.</p>";
+    } else {
+      const polisDiv = document.createElement("div");
+      polisDiv.className = "polis";
+      polisDiv.setAttribute("data-conversation_id", "8zpmmritvp");
+      polisDiv.setAttribute("data-xid", participantId);
+
+      document.getElementById("polis-container").appendChild(polisDiv);
+
+      const script = document.createElement("script");
+      script.src = "https://pol.is/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  </script>
+
+</body>
+</html>
