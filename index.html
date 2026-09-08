@@ -1,50 +1,89 @@
-<div class="notice">
-  <strong>Instructions</strong>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Governance Study</title>
 
-  <p>
-    Please spend up to <strong>5 minutes</strong> taking part. You will see
-    statements, on which you can vote Agree, Disagree, or Pass. You can do
-    this on as many statements as you wish.
-  </p>
-
-  <p>
-    You can also add your own statements (one idea per statement).
-  </p>
-
-  <p>
-    When you want to finish, <strong>close this tab and return to the original
-    survey tab</strong>, then click <strong>Next</strong> to complete the study.
-  </p>
-
-  <p>
-    Please do not include your name or anything that could identify you or
-    someone else in a statement you submit.
-  </p>
-</div>
-
-<div
-  id="polis"
-  class="polis"
-  data-conversation_id="8zpmmritvp">
-</div>
-
-<script>
-  window.addEventListener("load", function () {
-    const params = new URLSearchParams(window.location.search);
-    const participantId = params.get("pid");
-
-    if (!participantId) {
-      document.getElementById("polis").innerHTML =
-        "<p>Participant ID is missing. Please return to the survey.</p>";
-      return;
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+      line-height: 1.5;
     }
 
-    const polisDiv = document.getElementById("polis");
-    polisDiv.setAttribute("data-xid", participantId);
+    .notice {
+      background: #eef6ff;
+      border: 1px solid #b9d8f5;
+      padding: 16px 18px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
 
-    const script = document.createElement("script");
-    script.src = "https://pol.is/embed.js";
-    script.async = false;
-    document.body.appendChild(script);
-  });
-</script>
+    .notice strong {
+      font-size: 1.05em;
+    }
+
+    .notice p {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="notice">
+    <strong>Instructions</strong>
+
+    <p>
+      Please spend up to <strong>5 minutes</strong> taking part. You will see
+      statements, on which you can vote Agree, Disagree, or Pass. You can do
+      this on as many statements as you wish.
+    </p>
+
+    <p>
+      You can also add your own statements (one idea per statement).
+    </p>
+
+    <p>
+      When you want to finish, <strong>close this tab and return to the original
+      survey tab</strong>, then click <strong>Next</strong> to complete the study.
+    </p>
+
+    <p>
+      Please do not include your name or anything that could identify you or
+      someone else in a statement you submit.
+    </p>
+  </div>
+
+  <div
+    id="polis"
+    class="polis"
+    data-conversation_id="8zpmmritvp">
+  </div>
+
+  <script>
+    window.addEventListener("load", function () {
+      const params = new URLSearchParams(window.location.search);
+      const participantId = params.get("pid");
+
+      if (!participantId) {
+        document.getElementById("polis").innerHTML =
+          "<p>Participant ID is missing. Please return to the survey.</p>";
+        return;
+      }
+
+      const polisDiv = document.getElementById("polis");
+      polisDiv.setAttribute("data-xid", participantId);
+
+      const script = document.createElement("script");
+      script.src = "https://pol.is/embed.js";
+      script.async = false;
+      document.body.appendChild(script);
+    });
+  </script>
+
+</body>
+</html>
