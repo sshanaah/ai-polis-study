@@ -29,14 +29,22 @@
 </div>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const participantId = params.get("pid");
+  window.addEventListener("load", function () {
+    const params = new URLSearchParams(window.location.search);
+    const participantId = params.get("pid");
 
-  if (participantId) {
-    document
-      .getElementById("polis")
-      .setAttribute("data-xid", participantId);
-  }
+    if (!participantId) {
+      document.getElementById("polis").innerHTML =
+        "<p>Participant ID is missing. Please return to the survey.</p>";
+      return;
+    }
+
+    const polisDiv = document.getElementById("polis");
+    polisDiv.setAttribute("data-xid", participantId);
+
+    const script = document.createElement("script");
+    script.src = "https://pol.is/embed.js";
+    script.async = false;
+    document.body.appendChild(script);
+  });
 </script>
-
-<script async src="https://pol.is/embed.js"></script>
