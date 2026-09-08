@@ -1,75 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Governance Study</title>
+<div class="notice">
+  <strong>Instructions</strong>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 20px;
-      line-height: 1.5;
-    }
-
-    .notice {
-      background: #f3f3f3;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 6px;
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="notice">
-    <strong>Instructions</strong>
-     <p>
+  <p>
     Please spend up to <strong>5 minutes</strong> taking part. You will see
-    statements, on which you can vote Agree, Disagree, or Pass. You can do this
-    on as many statements as you wish. 
-     <p>
-    You can also add your own statements (one idea per statement). 
-   
+    statements, on which you can vote Agree, Disagree, or Pass. You can do
+    this on as many statements as you wish.
   </p>
 
   <p>
-    When you want to finish, <strong>close this tab and return to the original 
+    You can also add your own statements (one idea per statement).
+  </p>
+
+  <p>
+    When you want to finish, <strong>close this tab and return to the original
     survey tab</strong>, then click <strong>Next</strong> to complete the study.
   </p>
 
   <p>
-    Please do not include your name or anything that could identify you or 
+    Please do not include your name or anything that could identify you or
     someone else in a statement you submit.
   </p>
 </div>
 
-  <div id="polis-container"></div>
+<div
+  id="polis"
+  class="polis"
+  data-conversation_id="8zpmmritvp">
+</div>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const participantId = params.get("pid");
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const participantId = params.get("pid");
 
-    if (!participantId) {
-      document.getElementById("polis-container").innerHTML =
-        "<p>Participant ID is missing. Please return to the survey.</p>";
-    } else {
-      const polisDiv = document.createElement("div");
-      polisDiv.className = "polis";
-      polisDiv.setAttribute("data-conversation_id", "8zpmmritvp");
-      polisDiv.setAttribute("data-xid", participantId);
+  if (participantId) {
+    document
+      .getElementById("polis")
+      .setAttribute("data-xid", participantId);
+  }
+</script>
 
-      document.getElementById("polis-container").appendChild(polisDiv);
-
-      const script = document.createElement("script");
-      script.src = "https://pol.is/embed.js";
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  </script>
-
-</body>
-</html>
+<script async src="https://pol.is/embed.js"></script>
