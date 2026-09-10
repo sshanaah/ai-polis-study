@@ -59,30 +59,29 @@
     </p>
   </div>
 
-  <div
-    id="polis"
-    class="polis"
-    data-conversation_id="9rakfehnby">
-  </div>
+  <div id="polis-container"></div>
 
   <script>
     window.addEventListener("load", function () {
       const params = new URLSearchParams(window.location.search);
       const participantId = params.get("pid");
+      const container = document.getElementById("polis-container");
 
       if (!participantId) {
-        document.getElementById("polis").innerHTML =
+        container.innerHTML =
           "<p>Participant ID is missing. Please return to the survey.</p>";
         return;
       }
 
-      const polisDiv = document.getElementById("polis");
-      polisDiv.setAttribute("data-xid", participantId);
+      container.innerHTML =
+        "<div class='polis' " +
+        "data-conversation_id='9rakfehnby' " +
+        "data-xid='" + participantId + "'></div>";
 
       const script = document.createElement("script");
       script.src = "https://pol.is/embed.js";
-      script.async = false;
-      document.body.appendChild(script);
+      script.async = true;
+      container.appendChild(script);
     });
   </script>
 
